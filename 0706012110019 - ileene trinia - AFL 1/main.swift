@@ -6,6 +6,10 @@
 //
 
 import Foundation
+
+//global variables
+var shoppingCart = [String]()
+var totalPrice = 0.0
 main()
 
 func main(){
@@ -38,7 +42,6 @@ func main(){
             print("bye bye 👋🏻\n")
             exit(0)
         } else if userInput.caseInsensitiveCompare("s") == .orderedSame {
-            print("Shopping cart")
             cart()
         } else {
             print("\n😡 Please input a valid input 😡\n")
@@ -49,12 +52,41 @@ func main(){
 }
 
 func cart(){
+    var backpay: String = ""
+    if shoppingCart.isEmpty{
+        print("Your cart is Empty\nGo order for fulfill your card <3")
+        main()
+    }
+    else {
+        print("\n🛒🛒🛒 Shopping cart 🛒🛒🛒")
+        for item in shoppingCart {
+            print("- \(item) piece(s)")
+        }
+        print("\nTOTAL PRICE: \(totalPrice) IDR")
+        while true{
+            print("Press [B] to go back\nPress [P] to checkout your order.\nWatchuwannado?")
+            backpay = readLine()!
+            if backpay.caseInsensitiveCompare("B") == .orderedSame{
+                main()
+            } else if backpay.caseInsensitiveCompare("P") == .orderedSame{
+                checkout()
+            } else{
+                print("please input a valid input!!")
+                continue
+            }
+            break
+        }
+    }
+}
+
+func checkout(){
     
 }
 
 func tukutuku(){
     var inputtuku: String = ""
     var jtahu: Int = 0
+    
     
     while true{
         print("welcome to tuku-tuku 💰 \nwhat would you like to order?\n\n[1] tahu isi\n[2] nasi kuning\n[3] nasi campur\n[4] air mineral\n[5] lemper\n[6] teh poci\n-\n[B]ack to main menu\nYour menu choice?")
@@ -66,7 +98,10 @@ func tukutuku(){
                     jtahu = jumtahu
                     if jtahu > 0 {
                         // Use the jumlah variable here
-                        print("You want to buy \(jtahu) tahu isi. Thank you for ordering.")
+                        let price = Double(jtahu) * 10000
+                                    print("\n🛒Added \(jtahu) tahu isi to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                                    shoppingCart.append("tahu isi (\(jtahu))")
+                                    totalPrice += price
                         tukutuku()
                     } else {
                         print("Please enter a positive number")
