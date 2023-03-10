@@ -21,11 +21,10 @@ func main(){
         print("Your cafetaria choice?")
         userInput = readLine()!
         if userInput == "1"{
-            print("Welcome to tuku-tuku")
             tukutuku()
         } else if userInput == "2"{
             print("Welcome to gotri")
-            //code
+//            gotri()
         }else if userInput == "3"{
             print("Welcome to madam lie")
             //code
@@ -54,13 +53,13 @@ func main(){
 func cart(){
     var backpay: String = ""
     if shoppingCart.isEmpty{
-        print("Your cart is Empty\nGo order for fulfill your card <3")
+        print("\nYour cart is Empty\nGo order for fulfill your card <3\n")
         main()
     }
     else {
         print("\n🛒🛒🛒 Shopping cart 🛒🛒🛒")
         for item in shoppingCart {
-            print("- \(item) piece(s)")
+            print("- \(item)")
         }
         print("\nTOTAL PRICE: \(totalPrice) IDR")
         while true{
@@ -71,7 +70,7 @@ func cart(){
             } else if backpay.caseInsensitiveCompare("P") == .orderedSame{
                 checkout()
             } else{
-                print("please input a valid input!!")
+                print("please input a valid input!!\n")
                 continue
             }
             break
@@ -80,16 +79,44 @@ func cart(){
 }
 
 func checkout(){
-    
+    print("\n🛒🛒🛒 Checkout 🛒🛒🛒")
+    print("TOTAL PRICE: \(totalPrice) IDR")
+        
+    while true {
+        print("Please enter payment amount:")
+        if let paymentAmount = readLine(), let amount = Double(paymentAmount) {
+            if amount == 0 {
+                print("your payment can not be zero\n")
+            } else if amount < 0 {
+                print("your payment is less than zero :) \n")
+            }else if amount < totalPrice {
+                print("The payment amount is less than the total price.\n")
+            } else {
+                let change = amount - totalPrice
+                print("\nYour pay: \(amount)")
+                print("Change: \(change) IDR")
+                print("Thank you for shopping with us! Enjoy your meals!\n")
+                shoppingCart.removeAll()
+                totalPrice = 0
+                main()
+            }
+        } else {
+            print("\nInvalid input. Please enter a valid payment amount.\n")
+        }
+    }
 }
 
 func tukutuku(){
     var inputtuku: String = ""
     var jtahu: Int = 0
-    
+    var jnaskun: Int = 0
+    var jnascam: Int = 0
+    var jair: Int = 0
+    var jlemper: Int = 0
+    var jpoci: Int = 0
     
     while true{
-        print("welcome to tuku-tuku 💰 \nwhat would you like to order?\n\n[1] tahu isi\n[2] nasi kuning\n[3] nasi campur\n[4] air mineral\n[5] lemper\n[6] teh poci\n-\n[B]ack to main menu\nYour menu choice?")
+        print("\nWelcome to tuku-tuku 💰 \nwhat would you like to order?\n\n[1] tahu isi\n[2] nasi kuning\n[3] nasi campur\n[4] air mineral\n[5] lemper\n[6] teh poci\n-\n[B]ack to main menu\nYour menu choice?")
         
         inputtuku = readLine()!
         if inputtuku == "1"{
@@ -100,7 +127,7 @@ func tukutuku(){
                         // Use the jumlah variable here
                         let price = Double(jtahu) * 10000
                                     print("\n🛒Added \(jtahu) tahu isi to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
-                                    shoppingCart.append("tahu isi (\(jtahu))")
+                                    shoppingCart.append("tahu isi (\(jtahu)) piece(s) from tuku-tuku")
                                     totalPrice += price
                         tukutuku()
                     } else {
@@ -112,20 +139,112 @@ func tukutuku(){
                     continue
                 }
                 break
+            
         } else if inputtuku == "2"{
-            print("beli nasi kuning")
-            //code
+            print("nasi kuning @18k IDR \nhow many nasi kuning do you want to buy?")
+                if let jumnaskun = readLine(), let jumnaskun = Int(jumnaskun) {
+                    jnaskun = jumnaskun
+                    if jnaskun > 0 {
+                        // Use the jumlah variable here
+                        let price = Double(jnaskun) * 18000
+                                    print("\n🛒Added \(jnaskun) nasi kuning to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                                    shoppingCart.append("nasi kuning (\(jnaskun)) piece(s) from tuku-tuku")
+                                    totalPrice += price
+                        tukutuku()
+                    } else {
+                        print("Please enter a positive number")
+                        continue
+                    }
+                } else {
+                    print("😾Please enter a positive number😾\n")
+                    continue
+                }
+                break
+            
         }else if inputtuku == "3"{
-            print("beli nasi campur")
-            //code
+            print("nasi campur @18k IDR \nhow many nasi kuning do you want to buy?")
+                if let jumnascam = readLine(), let jumnascam = Int(jumnascam) {
+                    jnascam = jumnascam
+                    if jnascam > 0 {
+                        // Use the jumlah variable here
+                        let price = Double(jnascam) * 18000
+                                    print("\n🛒Added \(jnascam) nasi campur to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                                    shoppingCart.append("nasi campur (\(jnascam)) piece(s) from tuku-tuku")
+                                    totalPrice += price
+                        tukutuku()
+                    } else {
+                        print("Please enter a positive number")
+                        continue
+                    }
+                } else {
+                    print("😾Please enter a positive number😾\n")
+                    continue
+                }
+                break
+            
         }else if inputtuku == "4"{
-            print("beli air mineral")
-            //code
+            print("air mineral @5k IDR \nhow many air mineral do you want to buy?")
+                if let jumair = readLine(), let jumair = Int(jumair) {
+                    jair = jumair
+                    if jair > 0 {
+                        // Use the jumlah variable here
+                        let price = Double(jair) * 5000
+                                    print("\n🛒Added \(jair) air mineral to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                                    shoppingCart.append("air mineral (\(jair)) piece(s) from tuku-tuku")
+                                    totalPrice += price
+                        tukutuku()
+                    } else {
+                        print("Please enter a positive number")
+                        continue
+                    }
+                } else {
+                    print("😾Please enter a positive number😾\n")
+                    continue
+                }
+                break
+            
         }else if inputtuku == "5"{
-            print("beli lemper")
-            //code
+            print("lemper @8k IDR \nhow many lemper do you want to buy?")
+                if let jumlemper = readLine(), let jumlemper = Int(jumlemper) {
+                    jlemper = jumlemper
+                    if jlemper > 0 {
+                        // Use the jumlah variable here
+                        let price = Double(jlemper) * 8000
+                                    print("\n🛒Added \(jlemper) lemper to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                                    shoppingCart.append("lemper (\(jlemper)) piece(s) from tuku-tuku")
+                                    totalPrice += price
+                        tukutuku()
+                    } else {
+                        print("Please enter a positive number")
+                        continue
+                    }
+                } else {
+                    print("😾Please enter a positive number😾\n")
+                    continue
+                }
+                break
+            
         }else if inputtuku == "6"{
-            print("beli teh poci")
+            print("teh poci @6k IDR \nhow many teh poci do you want to buy?")
+                if let jumpoci = readLine(), let jumpoci = Int(jumpoci) {
+                    jpoci = jumpoci
+                    if jpoci > 0 {
+                        // Use the jumlah variable here
+                        let price = Double(jpoci) * 6000
+                                    print("\n🛒Added \(jpoci) teh poci to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                                    shoppingCart.append("teh poci (\(jpoci)) piece(s) from tuku-tuku")
+                                    totalPrice += price
+                        tukutuku()
+                    } else {
+                        print("Please enter a positive number")
+                        continue
+                    }
+                } else {
+                    print("😾Please enter a positive number😾\n")
+                    continue
+                }
+                break
+            
             //code
         }else if inputtuku.caseInsensitiveCompare("b") == .orderedSame {
             print("back to main menu wushhhhh 🏃🏻\n")
