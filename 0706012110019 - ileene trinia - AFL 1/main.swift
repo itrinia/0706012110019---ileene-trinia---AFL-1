@@ -8,7 +8,7 @@
 import Foundation
 
 //global variables
-var shoppingCart = [String]()
+var shoppingCart = [(cafetaria: String, order: String)]()
 var totalPrice = 0.0
 main()
 
@@ -127,7 +127,7 @@ func tukutuku(){
                         // Use the jumlah variable here
                         let price = Double(jtahu) * 10000
                                     print("\n🛒Added \(jtahu) tahu isi to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
-                                    shoppingCart.append("tahu isi (\(jtahu)) piece(s) from tuku-tuku")
+                                    shoppingCart.append((cafetaria: "tuku-tuku", order: "tahu isi \(jtahu)x"))
                                     totalPrice += price
                         tukutuku()
                     } else {
