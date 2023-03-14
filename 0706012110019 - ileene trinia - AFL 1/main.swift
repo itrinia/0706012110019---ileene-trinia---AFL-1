@@ -262,12 +262,12 @@ func gotri(){
     var jescendol: Int = 0
     var jlanggi: Int = 0
     var jsuun: Int = 0
-    var jnasbak: Int = 0
+    var jbakar: Int = 0
     var jrendang: Int = 0
     var jtt: Int = 0
     
     while true{
-        print("\nWelcome to tuku-tuku 💰 \nwhat would you like to order?\n\n[1] es cendol suji\n[2] nasi langgi\n[3] nasi campur suun\n[4] nasi bakar\n[5] nasi rendang\n[6] tahu telor\n-\n[B]ack to main menu\nYour menu choice?")
+        print("\nWelcome to gotri 💰 \nwhat would you like to order?\n\n[1] es cendol suji\n[2] nasi langgi\n[3] nasi campur suun\n[4] nasi bakar\n[5] nasi rendang\n[6] tahu telor\n-\n[B]ack to main menu\nYour menu choice?")
         
         inputgotri = readLine()!
         if inputgotri == "1"{
@@ -278,7 +278,7 @@ func gotri(){
                         // Use the jumlah variable here
                         let price = Double(jescendol) * 16300
                             print("\n🛒Added \(jescendol) es cendol suji to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
-                            shoppingCart.append((cafetaria: "gotri", order: "es cendol suji \(jtahu)x"))
+                            shoppingCart.append((cafetaria: "gotri", order: "es cendol suji \(jescendol)x"))
                             totalPrice += price
                         gotri()
                     } else {
@@ -335,15 +335,15 @@ func gotri(){
             
         }else if inputgotri == "4"{
             print("nasi bakar @27.2k IDR \nhow many nasi bakar do you want to buy?")
-                if let jumair = readLine(), let jumair = Int(jumair) {
-                    jair = jumair
-                    if jair > 0 {
+                if let jumbakar = readLine(), let jumbakar = Int(jumbakar) {
+                    jbakar = jumbakar
+                    if jbakar > 0 {
                         // Use the jumlah variable here
-                        let price = Double(jair) * 5000
-                                    print("\n🛒Added \(jair) air mineral to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
-                                    shoppingCart.append((cafetaria: "tuku-tuku", order: "air mineral \(jair)x"))
+                        let price = Double(jbakar) * 27200
+                                    print("\n🛒Added \(jbakar) nasi bakar to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                                    shoppingCart.append((cafetaria: "gotri", order: "nasi bakar \(jbakar)x"))
                                     totalPrice += price
-                        tukutuku()
+                        gotri()
                     } else {
                         print("Please enter a positive number")
                         continue
@@ -355,16 +355,16 @@ func gotri(){
                 break
             
         }else if inputgotri == "5"{
-            print("lemper @8k IDR \nhow many lemper do you want to buy?")
-                if let jumlemper = readLine(), let jumlemper = Int(jumlemper) {
-                    jlemper = jumlemper
-                    if jlemper > 0 {
+            print("nasi ayam rendang @20k IDR \nhow many nasi ayam rendang do you want to buy?")
+                if let jumrendang = readLine(), let jumrendang = Int(jumrendang) {
+                    jrendang = jumrendang
+                    if jrendang > 0 {
                         // Use the jumlah variable here
-                        let price = Double(jlemper) * 8000
-                                    print("\n🛒Added \(jlemper) lemper to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
-                                    shoppingCart.append((cafetaria: "tuku-tuku", order: "lemper \(jlemper)x"))
+                        let price = Double(jrendang) * 20000
+                                    print("\n🛒Added \(jrendang) nasi ayam rendang to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                                    shoppingCart.append((cafetaria: "gotri", order: "nasi ayam rendang \(jrendang)x"))
                                     totalPrice += price
-                        tukutuku()
+                        gotri()
                     } else {
                         print("Please enter a positive number")
                         continue
@@ -376,16 +376,16 @@ func gotri(){
                 break
             
         }else if inputgotri == "6"{
-            print("teh poci @6k IDR \nhow many teh poci do you want to buy?")
-                if let jumpoci = readLine(), let jumpoci = Int(jumpoci) {
-                    jpoci = jumpoci
-                    if jpoci > 0 {
+            print("tahu telor @19k IDR \nhow many tahu telor do you want to buy?")
+                if let jumtt = readLine(), let jumtt = Int(jumtt) {
+                    jtt = jumtt
+                    if jtt > 0 {
                         // Use the jumlah variable here
-                        let price = Double(jpoci) * 6000
-                                    print("\n🛒Added \(jpoci) teh poci to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
-                                    shoppingCart.append((cafetaria: "tuku-tuku", order: "teh poci \(jnaskun)x"))
+                        let price = Double(jtt) * 19000
+                                    print("\n🛒Added \(jumtt) tahu telor to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                                    shoppingCart.append((cafetaria: "gotri", order: "tahu telor \(jtt)x"))
                                     totalPrice += price
-                        tukutuku()
+                        gotri()
                     } else {
                         print("Please enter a positive number")
                         continue
