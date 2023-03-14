@@ -156,7 +156,7 @@ func tukutuku(){
                         continue
                     }
                 } else {
-                    print("😾Please enter a positive number😾\n")
+                    print("😾Please enter a positive number!😾\n")
                     continue
                 }
                 break
