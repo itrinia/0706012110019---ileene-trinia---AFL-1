@@ -72,10 +72,7 @@ func main(){
     }
 }
 
-
-
 func printShoppingCart() {
-    
     var total = 0
     
     if shoppingCart.isEmpty {
@@ -113,10 +110,10 @@ func printShoppingCart() {
 
 func checkout(total: Int){
     print("\n🛒🛒🛒 Checkout 🛒🛒🛒")
-    print("TOTAL PRICE: \(total) IDR")
+    print("TOTAL PRICE: \(total)k IDR")
     
     while true {
-        print("Please enter payment amount:")
+        print("Please enter payment amount: \n[Please enter without 000]")
         if let paymentAmount = readLine(), let amount = Int(paymentAmount) {
             if amount == 0 {
                 print("your payment can not be zero\n")
@@ -126,8 +123,8 @@ func checkout(total: Int){
                 print("The payment amount is less than the total price.\n")
             } else {
                 let change = amount - total
-                print("\nYour pay: \(amount)")
-                print("Change: \(change) IDR")
+                print("\nYour pay: \(amount)k IDR")
+                print("Change: \(change)k IDR")
                 print("Thank you for shopping with us! Enjoy your meals!\n")
                 shoppingCart.removeAll()
                 main()
@@ -140,11 +137,11 @@ func checkout(total: Int){
 
 func tukutuku(){
     let product_tukutuku = [
-        (ID: 1, name: "Nasi Kuning", price: 1),
-        (ID: 2, name: "Nasi Campur", price: 1),
-        (ID: 3, name: "Air Mineral", price: 1),
-        (ID: 4, name: "Lemper", price: 1),
-        (ID: 5, name: "Teh Poci", price: 1),
+        (ID: 1, name: "Nasi Kuning", price: 20),
+        (ID: 2, name: "Nasi Campur", price: 18),
+        (ID: 3, name: "Air Mineral", price: 4),
+        (ID: 4, name: "Lemper", price: 8),
+        (ID: 5, name: "Teh Poci", price: 5),
     ]
     
     var productSelected: (ID: Int, name: String, price: Int)? = nil
@@ -179,7 +176,7 @@ func tukutuku(){
     }
     
     while true {
-        print("\(productSelected!.name) @\(productSelected!.price) IDR \nhow many \(productSelected!.name) do you want to buy?")
+        print("\(productSelected!.name) @\(productSelected!.price)k IDR \nhow many \(productSelected!.name) do you want to buy?")
         let tukuItemCount = Int(readLine() ?? "")
         
         if tukuItemCount == nil {
@@ -190,7 +187,7 @@ func tukutuku(){
             } else {
                 let total = tukuItemCount! * productSelected!.price
                 addItemToCart(cafeteria: "Tuku-Tuku", order: productSelected!.name, price: productSelected!.price, amount: tukuItemCount!)
-                print("\n🛒Added \(productSelected!.name) tahu isi to cart for \(total) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                print("\n🛒Added \(productSelected!.name) to cart for \(total)K IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
                 main()
             }
         }
@@ -198,153 +195,61 @@ func tukutuku(){
 }
 
 func gotri(){
-    //    var inputgotri: String = ""
-    //    var jescendol: Int = 0
-    //    var jlanggi: Int = 0
-    //    var jsuun: Int = 0
-    //    var jbakar: Int = 0
-    //    var jrendang: Int = 0
-    //    var jtt: Int = 0
-    //
-    //    while true{
-    //        print("\nWelcome to gotri 💰 \nwhat would you like to order?\n\n[1] es cendol suji\n[2] nasi langgi\n[3] nasi campur suun\n[4] nasi bakar\n[5] nasi rendang\n[6] tahu telor\n-\n[B]ack to main menu\nYour menu choice?")
-    //
-    //        inputgotri = readLine()!
-    //        if inputgotri == "1"{
-    //            print("es cendol suji @16.3k IDR \nhow many es cendol suji do you want to buy?")
-    //            if let jumescendol = readLine(), let jumescendol = Int(jumescendol) {
-    //                jescendol = jumescendol
-    //                if jescendol > 0 {
-    //                    // Use the jumlah variable here
-    //                    let price = Double(jescendol) * 16300
-    //                    print("\n🛒Added \(jescendol) es cendol suji to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
-    //                    addItemToCart(cafeteria: "gotri", order: "es cendol suji")
-    //                    totalPrice += price
-    //                    gotri()
-    //                } else {
-    //                    print("Please enter a positive number")
-    //                    continue
-    //                }
-    //            } else {
-    //                print("😾Please enter a positive number😾\n")
-    //                continue
-    //            }
-    //            break
-    //
-    //        } else if inputgotri == "2"{
-    //            print("nasi langgi @27.2k IDR \nhow many nasi langgi do you want to buy?")
-    //            if let jumlanggi = readLine(), let jumlanggi = Int(jumlanggi) {
-    //                jlanggi = jumlanggi
-    //                if jlanggi > 0 {
-    //                    // Use the jumlah variable here
-    //                    let price = Double(jlanggi) * 27200
-    //                    print("\n🛒Added \(jlanggi) nasi langgi to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
-    //                    addItemToCart(cafeteria: "gotri", order: "nasi langgi")
-    //                    totalPrice += price
-    //                    gotri()
-    //                } else {
-    //                    print("Please enter a positive number")
-    //                    continue
-    //                }
-    //            } else {
-    //                print("😾Please enter a positive number😾\n")
-    //                continue
-    //            }
-    //            break
-    //
-    //        }else if inputgotri == "3"{
-    //            print("nasi campur suun @27.2k IDR \nhow many nasi campur suun do you want to buy?")
-    //            if let jumsuun = readLine(), let jumsuun = Int(jumsuun) {
-    //                jsuun = jumsuun
-    //                if jsuun > 0 {
-    //                    // Use the jumlah variable here
-    //                    let price = Double(jsuun) * 27200
-    //                    print("\n🛒Added \(jsuun) nasi campur suun to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
-    //                    addItemToCart(cafeteria: "gotri", order: "nasi campur suun")
-    //                    totalPrice += price
-    //                    gotri()
-    //                } else {
-    //                    print("Please enter a positive number")
-    //                    continue
-    //                }
-    //            } else {
-    //                print("😾Please enter a positive number😾\n")
-    //                continue
-    //            }
-    //            break
-    //
-    //        }else if inputgotri == "4"{
-    //            print("nasi bakar @27.2k IDR \nhow many nasi bakar do you want to buy?")
-    //            if let jumbakar = readLine(), let jumbakar = Int(jumbakar) {
-    //                jbakar = jumbakar
-    //                if jbakar > 0 {
-    //                    // Use the jumlah variable here
-    //                    let price = Double(jbakar) * 27200
-    //                    print("\n🛒Added \(jbakar) nasi bakar to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
-    //                    addItemToCart(cafeteria: "gotri", order: "nasi bakar")
-    //                    totalPrice += price
-    //                    gotri()
-    //                } else {
-    //                    print("Please enter a positive number")
-    //                    continue
-    //                }
-    //            } else {
-    //                print("😾Please enter a positive number😾\n")
-    //                continue
-    //            }
-    //            break
-    //
-    //        }else if inputgotri == "5"{
-    //            print("nasi ayam rendang @20k IDR \nhow many nasi ayam rendang do you want to buy?")
-    //            if let jumrendang = readLine(), let jumrendang = Int(jumrendang) {
-    //                jrendang = jumrendang
-    //                if jrendang > 0 {
-    //                    // Use the jumlah variable here
-    //                    let price = Double(jrendang) * 20000
-    //                    print("\n🛒Added \(jrendang) nasi ayam rendang to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
-    //                    addItemToCart(cafeteria: "gotri", order: "nasi ayam rendang")
-    //                    totalPrice += price
-    //                    gotri()
-    //                } else {
-    //                    print("Please enter a positive number")
-    //                    continue
-    //                }
-    //            } else {
-    //                print("😾Please enter a positive number😾\n")
-    //                continue
-    //            }
-    //            break
-    //
-    //        }else if inputgotri == "6"{
-    //            print("tahu telor @19k IDR \nhow many tahu telor do you want to buy?")
-    //            if let jumtt = readLine(), let jumtt = Int(jumtt) {
-    //                jtt = jumtt
-    //                if jtt > 0 {
-    //                    // Use the jumlah variable here
-    //                    let price = Double(jtt) * 19000
-    //                    print("\n🛒Added \(jumtt) tahu telor to cart for \(price) IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
-    //                    addItemToCart(cafeteria: "gotri", order: "es cendol suji")
-    //                    totalPrice += price
-    //                    gotri()
-    //                } else {
-    //                    print("Please enter a positive number")
-    //                    continue
-    //                }
-    //            } else {
-    //                print("😾Please enter a positive number😾\n")
-    //                continue
-    //            }
-    //            break
-    //
-    //            //code
-    //        }else if inputgotri.caseInsensitiveCompare("b") == .orderedSame {
-    //            print("back to main menu wushhhhh 🏃🏻\n")
-    //            main()
-    //        } else {
-    //            print("\n😡 Please input a valid input 😡\n")
-    //            continue
-    //        }
-    //        break
-    //    }
+    let product_gotri = [
+        (ID: 1, name: "Es Cendol Suji", price: 17),
+        (ID: 2, name: "Nasi Campur Suun", price: 28),
+        (ID: 3, name: "Nasi Langgi", price: 28),
+        (ID: 4, name: "Nasi Ayam Rendang", price: 20),
+        (ID: 5, name: "Tahu Telor", price: 20),
+    ]
+    
+    var productSelected: (ID: Int, name: String, price: Int)? = nil
+    
+    print("\nWelcome to Gotri 💰 \nwhat would you like to order?\n")
+    product_gotri.forEach({ product in
+        print("[\(product.ID)] \(product.name)")
+    })
+    
+    print("[B]ack to main menu")
+    print("Your choice? ")
+    
+    while true {
+        let inputtuku = readLine()
+        
+        if inputtuku == nil {
+            // if the person does not tuku a product, display error
+            print("\n😡 Please input a valid input 😡\n")
+        } else {
+            if inputtuku!.lowercased() == "b" {
+                main()
+            }
+            
+            productSelected = product_gotri.first(where: { $0.ID == Int(inputtuku!) ?? 0 })
+            
+            if (productSelected == nil) {
+                print("😾Please enter a product that exist!😾\n")
+            } else {
+                break
+            }
+        }
+    }
+    
+    while true {
+        print("\(productSelected!.name) @\(productSelected!.price)k IDR \nhow many \(productSelected!.name) do you want to buy?")
+        let tukuItemCount = Int(readLine() ?? "")
+        
+        if tukuItemCount == nil {
+            print("please input a valid count!")
+        } else {
+            if tukuItemCount! <= 0 {
+                print("Please enter a positive number")
+            } else {
+                let total = tukuItemCount! * productSelected!.price
+                addItemToCart(cafeteria: "Gotri", order: productSelected!.name, price: productSelected!.price, amount: tukuItemCount!)
+                print("\n🛒Added \(productSelected!.name) to cart for \(total)K IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                main()
+            }
+        }
+    }
 }
 
