@@ -52,7 +52,7 @@ func main(){
             madamlie()
         }else if userInput == "4"{
             print("Welcome to kopte")
-            //code
+            kopte()
         }else if userInput == "5"{
             print("Welcome to xiangjia")
             //code
@@ -311,3 +311,70 @@ func madamlie(){
         }
     }
 }
+
+func kopte(){
+    let product_kopte = [
+        (ID: 1, name: "kopi tarik kopte", price: 12),
+        (ID: 2, name: "kopi tarik cincau", price: 14),
+        (ID: 3, name: "kopi teh tarik", price: 13),
+        (ID: 4, name: "kopi coklat tarik", price: 13),
+        (ID: 5, name: "kopi hitam manis", price: 10),
+        (ID: 6, name: "kopi hitam", price: 8),
+        (ID: 7, name: "teh tarik kopte", price: 12),
+        (ID: 8, name: "teh tarik cincau", price: 14),
+        (ID: 9, name: "teh jeruk nipis", price: 12),
+        (ID: 10, name: "teh manis", price: 10),
+        (ID: 11, name: "teh tawar", price: 8),
+        (ID: 12, name: "coklat tarik kopte", price: 12),
+    ]
+    
+    var productSelected: (ID: Int, name: String, price: Int)? = nil
+    
+    print("\nWelcome to Kopte 👩🏻‍🍳 \nwhat would you like to order?\n")
+    product_kopte.forEach({ product in
+        print("[\(product.ID)] \(product.name)")
+    })
+    
+    print("[B]ack to main menu")
+    print("Your choice? ")
+    
+    while true {
+        let inputbuy = readLine()
+        
+        if inputbuy == nil {
+            // if the person does not tuku a product, display error
+            print("\n😡 Please input a valid input 😡\n")
+        } else {
+            if inputbuy!.lowercased() == "b" {
+                main()
+            }
+            
+            productSelected = product_kopte.first(where: { $0.ID == Int(inputbuy!) ?? 0 })
+            
+            if (productSelected == nil) {
+                print("😾Please enter a product that exist!😾\n")
+            } else {
+                break
+            }
+        }
+    }
+    
+    while true {
+        print("\(productSelected!.name) @\(productSelected!.price)k IDR \nhow many \(productSelected!.name) do you want to buy?")
+        let buyItemCount = Int(readLine() ?? "")
+        
+        if buyItemCount == nil {
+            print("please input a valid count!")
+        } else {
+            if buyItemCount! <= 0 {
+                print("Please enter a positive number")
+            } else {
+                let total = buyItemCount! * productSelected!.price
+                addItemToCart(cafeteria: "Kopte", order: productSelected!.name, price: productSelected!.price, amount: buyItemCount!)
+                print("\n🛒Added \(productSelected!.name) to cart for \(total)K IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                main()
+            }
+        }
+    }
+}
+
