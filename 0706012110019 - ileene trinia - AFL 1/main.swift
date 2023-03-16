@@ -55,7 +55,7 @@ func main(){
             kopte()
         }else if userInput == "5"{
             print("Welcome to xiangjia")
-            //code
+            xiangjia()
         }else if userInput == "6"{
             print("Welcome to raburi")
             //code
@@ -76,7 +76,7 @@ func printShoppingCart() {
     var total = 0
     
     if shoppingCart.isEmpty {
-        print("\nYou did not buy any item yet! Hit return to go back.")
+        print("\nYou did not buy any item yet! Press 'return' to go back.")
         let _ = readLine()
         main()
     }
@@ -377,4 +377,74 @@ func kopte(){
         }
     }
 }
+
+func xiangjia(){
+    let product_xiangjia = [
+        (ID: 1, name: "kaya toast", price: 12),
+        (ID: 2, name: "kacang kowa", price: 15),
+        (ID: 3, name: "telur setengah matang", price: 12),
+        (ID: 4, name: "kaya toast butter", price: 15),
+        (ID: 5, name: "mie kosong selat panjang", price: 25),
+        (ID: 6, name: "mie ayam kobe", price: 25),
+        (ID: 7, name: "mie hijau", price: 25),
+        (ID: 8, name: "nasi hainan", price: 30),
+        (ID: 9, name: "bubur polos", price: 15),
+        (ID: 10, name: "bubur ayam/bubur abon", price: 25),
+        (ID: 11, name: "es kopi kosong", price: 12),
+        (ID: 12, name: "es teh tarik", price: 14),
+        (ID: 13, name: "es milo malay", price: 14),
+        (ID: 14, name: "susu jahe hangat", price: 12),
+        (ID: 15, name: "es teh O", price: 7),
+    ]
+    
+    var productSelected: (ID: Int, name: String, price: Int)? = nil
+    
+    print("\nWelcome to XiangJia 👩🏻‍🍳 \nwhat would you like to order?\n")
+    product_xiangjia.forEach({ product in
+        print("[\(product.ID)] \(product.name)")
+    })
+    
+    print("[B]ack to main menu")
+    print("Your choice? ")
+    
+    while true {
+        let inputbuy = readLine()
+        
+        if inputbuy == nil {
+            // if the person does not tuku a product, display error
+            print("\n😡 Please input a valid input 😡\n")
+        } else {
+            if inputbuy!.lowercased() == "b" {
+                main()
+            }
+            
+            productSelected = product_xiangjia.first(where: { $0.ID == Int(inputbuy!) ?? 0 })
+            
+            if (productSelected == nil) {
+                print("😾Please enter a product that exist!😾\n")
+            } else {
+                break
+            }
+        }
+    }
+    
+    while true {
+        print("\(productSelected!.name) @\(productSelected!.price)k IDR \nhow many \(productSelected!.name) do you want to buy?")
+        let buyItemCount = Int(readLine() ?? "")
+        
+        if buyItemCount == nil {
+            print("please input a valid count!")
+        } else {
+            if buyItemCount! <= 0 {
+                print("Please enter a positive number")
+            } else {
+                let total = buyItemCount! * productSelected!.price
+                addItemToCart(cafeteria: "XiangJia", order: productSelected!.name, price: productSelected!.price, amount: buyItemCount!)
+                print("\n🛒Added \(productSelected!.name) to cart for \(total)K IDR🛒 \n🛍️Thank you for ordering 🛍️\n\n")
+                main()
+            }
+        }
+    }
+}
+
 
