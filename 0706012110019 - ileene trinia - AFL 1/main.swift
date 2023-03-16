@@ -81,7 +81,7 @@ func printShoppingCart() {
         main()
     }
     shoppingCart.forEach({ (shop, shopCart) in
-        print("\n🛍️🛍️🛍️\nYour order in \(shop): ")
+        print("\nYour order in \(shop): ")
         
         shopCart.forEach({ (item, data) in
             total += data.amount * data.price
